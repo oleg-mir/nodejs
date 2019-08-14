@@ -1,5 +1,4 @@
-const fs = require('fs')
+require('./utils.js')
+const name = 'MyName'
 
-fs.writeFileSync('notes.txt','This file was created by nodejs');
-fs.appendFileSync('notes.txt','\nappend test')
-fs.appendFileSync('notes.txt','\nappend test2')
+console.log(name)
