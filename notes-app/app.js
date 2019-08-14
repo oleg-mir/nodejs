@@ -1,4 +1,3 @@
-require('./utils.js')
-const name = 'MyName'
+const add = require('./utils.js')
 
-console.log(name)
+console.log(add(2,3))
