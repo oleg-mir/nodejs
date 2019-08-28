@@ -5,6 +5,15 @@ const yargs = require('yargs')
 
 yargs.version('0.9')
 
+//listNotes command
+yargs.command({
+    command:'listNotes',
+    describe:'List all notes',
+    handler(){
+        notes.listNotes()
+    }
+})
+
 //add command
 yargs.command({
     command:'add',
