@@ -2,9 +2,6 @@ const fs = require('fs')
 const chalk = require('chalk');
 
 console.log('--------notes.js-----------')
-const getNotes =()=>{
-    return 'Your Notes...'
-}
 
 const addNote = (title,body) =>{
     const notes = loadNotes();
@@ -59,9 +56,21 @@ const listNotes = ()=>{
     allNotes.forEach(note=>console.log(note.title))
 }
 
+const readNote = (title)=>{
+    const noteToRead = loadNotes().find(note => note.title === title);
+
+    if(noteToRead){
+        console.log(chalk.inverse(noteToRead.title))
+        console.log(chalk.blue(noteToRead.body))
+    }else{
+        console.log(chalk.red('Note not found.'))
+    }
+}
+
 module.exports = {
     getNotes: getNotes,
     addNote: addNote,
     removeNote: removeNote,
-    listNotes: listNotes
+    listNotes: listNotes,
+    readNote: readNote
 }
