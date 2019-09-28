@@ -5,21 +5,27 @@ const app = express()
 
 //app.com
 app.get('',(req, res)=>{
-    res.send('Hello express!')
+    res.send('<h1>Hello express!</h1>')
 })
 
 //app.com/help
 app.get('/help',(req, res)=>{
-    res.send('Help Page')
+    res.send({
+        name: 'Oleg',
+        birthdate: '1988'
+    })
 })
 
 //app.com/about
 app.get('/about',(req, res)=>{
-    res.send('About Page')
+    res.send('<h1>About</h1>')
 })
 
 app.get('/weather',(req, res)=>{
-    res.send('Weather Page')
+    res.send({
+        forecast:'la lala ',
+        location: 'israel'
+    })
 })
 
 app.listen(3000,()=>{
