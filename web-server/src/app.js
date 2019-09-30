@@ -5,8 +5,17 @@ const express = require('express')
 const app = express()
 const publicDirectory = path.join(__dirname, '../public')
 
+//setting handlebars for dynamic templates
+app.set('view engine', 'hbs')
 app.use(express.static(publicDirectory))
 
+
+app.get('',(req, res)=>{
+    res.render('index.hbs', {
+        title: 'Weather',
+        name: 'Oleg'
+    })
+})
 app.get('/weather',(req, res)=>{
     res.send({
         forecast:'la lala ',
