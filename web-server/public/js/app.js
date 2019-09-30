@@ -1,0 +1,1 @@
+console.log('Cliens side javascript loaded')
