@@ -16,6 +16,20 @@ app.get('',(req, res)=>{
         name: 'Oleg'
     })
 })
+
+app.get('/about',(req, res)=>{
+    res.render('about', {
+        title: 'About Me',
+        name: 'Oleg'
+    })
+})
+
+app.get('/help',(req, res)=>{
+    res.render('help', {
+        helpmessage: 'This is a help message'
+    })
+})
+
 app.get('/weather',(req, res)=>{
     res.send({
         forecast:'la lala ',
