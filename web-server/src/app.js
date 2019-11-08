@@ -9,6 +9,10 @@ const publicDirectory = path.join(__dirname, '../public')
 app.set('view engine', 'hbs')
 app.use(express.static(publicDirectory))
 
+//setting a path for "views"
+const viewsPath = path.join(__dirname, '../templates')
+app.set('views', viewsPath)
+
 
 app.get('',(req, res)=>{
     res.render('index', {
