@@ -17,24 +17,26 @@ app.set('views', viewsPath)
 const partialsPath = path.join(__dirname, '../templates/partials')
 hbs.registerPartials(partialsPath)
 
+const createdBy = "Oleg Mir"
+
 app.get('',(req, res)=>{
     res.render('index', {
         title: 'Weather new',
-        name: 'Oleg Mir'
+        name: createdBy
     })
 })
 
 app.get('/about',(req, res)=>{
     res.render('about', {
         title: 'About Me',
-        name: 'Oleg Mir'
+        name: createdBy
     })
 })
 
 app.get('/help',(req, res)=>{
     res.render('help', {
         title: 'Help',
-        name: 'Oleg Mir',
+        name: createdBy,
         helpmessage: 'This is a help message'
     })
 })
@@ -47,11 +49,19 @@ app.get('/weather',(req, res)=>{
 })
 
 app.get('/help/*', (req, res)=>{
-    res.send('Help article not found.')
+    res.render('404', {
+        title: "404",
+        errorMessage: "Help article not found.",
+        name: createdBy
+    })
 })
 
 app.get('*', (req, res)=>{
-    res.send('my 404 page')
+    res.render('404', {
+        title: "404",
+        errorMessage: "Page not found.",
+        name: createdBy
+    })
 })
 
 app.listen(3000,()=>{
