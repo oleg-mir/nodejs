@@ -8,6 +8,9 @@ const forecast = require('./utils/forecast')
 
 //express has 1 function that gets you the app
 const app = express()
+//environement variable provided by Heroku. when doesnt exist, e.g running localy
+const port = process.env.PORT || 3000
+
 const publicDirectory = path.join(__dirname, '../public')
 
 //setting handlebars for dynamic templates
@@ -102,6 +105,6 @@ app.get('*', (req, res)=>{
     })
 })
 
-app.listen(3000,()=>{
-    console.log('Server has started on port 3000')
+app.listen(port,()=>{
+    console.log('Server has started on port ' + port)
 })
