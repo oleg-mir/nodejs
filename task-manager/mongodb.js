@@ -1,7 +1,7 @@
 //CRUD - create read update delete
 
-const mongodb = require('mongodb')
-const MongoClient = mongodb.MongoClient
+//using destructure feature
+const {MongoClient, ObjectID }= require('mongodb')
 
 const connectionURL = 'mongodb://127.0.0.1:27017'
 const databaseName = 'task-manager'
@@ -12,29 +12,18 @@ MongoClient.connect(connectionURL, {useNewUrlParser: true, useUnifiedTopology: t
     }
 
     console.log('Connection Created!')
-
     const db = client.db(databaseName)
 
-    db.collection('tasks').insertMany(
-        [
-            {
-                description: 'task a',
-                completed:true
-            },
-            {
-                description: 'task b',
-                completed: true
-            },
-            {
-                description: 'task c',
-                completed: false
-            }
-        ],(error, result)=>{
-            if(error){
-                return console.log('Unable to insert tasks!')
-            }
-
-            console.log(result.ops)
+    db.collection('tasks').findOne({_id: new ObjectID("5df53548bd1fc11424498829")},(error, task)=>{
+        if(error)
+        {
+            return console.log('Unable to fetch task')
         }
-    )
+
+        console.log(task)
+    })
+
+    db.collection('tasks').find({completed:true}).toArray((error, tasks)=>{
+        console.log(tasks)
+    })
 })
