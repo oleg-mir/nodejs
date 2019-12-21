@@ -14,16 +14,7 @@ MongoClient.connect(connectionURL, {useNewUrlParser: true, useUnifiedTopology: t
     console.log('Connection Created!')
     const db = client.db(databaseName)
 
-    db.collection('tasks').findOne({_id: new ObjectID("5df53548bd1fc11424498829")},(error, task)=>{
-        if(error)
-        {
-            return console.log('Unable to fetch task')
-        }
-
-        console.log(task)
-    })
-
-    db.collection('tasks').find({completed:true}).toArray((error, tasks)=>{
-        console.log(tasks)
-    })
+    db.collection('tasks').deleteOne({description: "task a"})
+    .then((result)=>{ console.log(result)})
+    .catch((error)=>{ console.log(error)})
 })
